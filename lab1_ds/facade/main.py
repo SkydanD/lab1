@@ -5,9 +5,10 @@ from os import environ
 from uuid import uuid4
 import json
 from base_client import QuieneHz
-from asyncio import get_event_loop
+from asyncio import new_event_loop
 
-loop = get_event_loop()
+
+loop = new_event_loop()
 loop.run_until_complete(GetInfoService.get_all_services())
 
 instance_qu = QuieneHz(
@@ -15,6 +16,8 @@ instance_qu = QuieneHz(
     cluster_name="dev"
 )
 instance_qu.create_quein("qu_custom")
+# print("heh {}".format(GetInfoService.nodes))
+
 LoggerPorts.proxys_servies = GetInfoService.loggin
 Messgae.proxys_servies = GetInfoService.message
 
@@ -75,8 +78,10 @@ app.add_routes([
     web.post('/', save_massage)
 ])
 
+print("hii")
 
 if __name__ == "__main__":
+    print("hii")
     web.run_app(
         host="0.0.0.0",
         port=environ.get("PORT_SEVICE"),

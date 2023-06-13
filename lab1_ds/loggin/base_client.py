@@ -48,7 +48,7 @@ class GetInfoService:
                             service_name= name_service
                     ))
         info_service = info_service[0]
-        return "http://{addres}:{ports}".format(
+        return "{addres}:{ports}".format(
             addres=info_service["ServiceName"],
             ports=info_service["ServicePort"]
             )
@@ -58,4 +58,4 @@ class GetInfoService:
         cls.nodes = []
             
         for number_service in range(1,4):
-            cls.nodes.append(cls.info_service(f"hazelcast-node-{number_service}"))
+            cls.nodes.append(await cls.info_service(f"hazelcast-node-{number_service}"))

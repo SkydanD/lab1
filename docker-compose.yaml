@@ -157,7 +157,7 @@ services:
     restart: unless-stopped
     environment:
       PORT_SEVICE: ${MESSAGE_PORT_2}
-      SERVICE_NAME: "api-message-1"
+      SERVICE_NAME: "api-message-2"
     ports:
       - "${MESSAGE_PORT_2}:${MESSAGE_PORT_2}"
     networks:

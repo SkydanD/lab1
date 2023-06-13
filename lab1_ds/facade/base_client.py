@@ -29,6 +29,7 @@ class MapHz(ClientOperator):
 class QuieneHz(ClientOperator):
     
     def create_quein(self, name_qu: str):
+        print("heh {}".format(self._client))
         self.quiene_hz = self._client.get_queue(name_qu)
         
     async def send_data(self, message: str):

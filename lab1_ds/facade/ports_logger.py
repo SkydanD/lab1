@@ -64,6 +64,11 @@ class GetInfoService:
                             service_name= name_service
                     ))
         info_service = info_service[0]
+        if "hazelcast-node-" in name_service:
+            return "{addres}:{ports}".format(
+            addres=info_service["ServiceName"],
+            ports=info_service["ServicePort"]
+            )
         return "http://{addres}:{ports}".format(
             addres=info_service["ServiceName"],
             ports=info_service["ServicePort"]
@@ -75,9 +80,9 @@ class GetInfoService:
         cls.loggin = []
         cls.nodes = []
         for number_service in range(1,3):
-            cls.message.append(cls.info_service(f"api-message-{number_service}"))
+            cls.message.append(await cls.info_service(f"api-message-{number_service}"))
             
         for number_service in range(1,4):
-            cls.loggin.append(cls.info_service(f"api-loggin-{number_service}"))
-            cls.nodes.append(cls.info_service(f"hazelcast-node-{number_service}"))
+            cls.loggin.append(await cls.info_service(f"api-loggin-{number_service}"))
+            cls.nodes.append(await cls.info_service(f"hazelcast-node-{number_service}"))
     

@@ -3,9 +3,9 @@ from os import environ
 import json
 from global_utils import HEADERS
 from base_client import QuieneHz, GetInfoService
-from asyncio import get_event_loop
+from asyncio import new_event_loop
 
-loop = get_event_loop()
+loop = new_event_loop()
 loop.run_until_complete(GetInfoService.get_all_services())
 
 app = web.Application()
